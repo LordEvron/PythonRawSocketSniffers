@@ -1,0 +1,83 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+.env
+*.egg-info/
+.tox/
+build/
+dist/
+develop-eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg
+bdist/
+*.whl
+*.lib
+
+# PyInstaller
+build/
+dist/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Log files and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.idea/
+*.vscode/
+
+# Temporary files
+*~
+\#*
+*.tmp
+
+# Coverage data
+.coverage
+*.profraw
+
+# If you are using scapy
+*.pcap
+*.cap
+
+# If you create any output files
+output/
+results/
+data/
+
+# Executables
+*.exe
+
+# IDE
+.idea
+
