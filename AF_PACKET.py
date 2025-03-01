@@ -80,6 +80,21 @@ def capture_packets(interface):
                     print(f"UDP Checksum: {checksum}")
                     print(f"UDP Data: {binascii.hexlify(udp_data)}")
 
+                elif protocol == 6: #TCP protocol number is 6
+                    ip_header_length = (ip_header_unpacked[0] >> 4) * 4 #calculating data offset. *4 because the offset is specified in 32 bit words
+                    tcp_header = ethernet_data[ip_header_length:ip_header_length + 20]  # Assuming no options
+                    tcp_header_unpacked = struct.unpack("!HHLLBBHHH", tcp_header)
+                    src_port = tcp_header_unpacked[0]
+                    dest_port = tcp_header_unpacked[1]
+                    seq_num = tcp_header_unpacked[2]
+                    ack_num = tcp_header_unpacked[3]
+                    data_offset = (tcp_header_unpacked[4] >> 4) * 4
+                    tcp_data = ethernet_data[ip_header_length + data_offset:]
+
+                    print(f"TCP: Source Port: {src_port}, Destination Port: {dest_port}")
+                    print(f"TCP: Sequence Number: {seq_num}, Acknowledgement Number: {ack_num}")
+                    print(f"TCP: Data: {binascii.hexlify(tcp_data)}")
+
             # Add more parsing logic for other protocols (TCP, etc.) .
 
             print("-" * 40)

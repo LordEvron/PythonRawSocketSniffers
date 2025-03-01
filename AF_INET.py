@@ -56,22 +56,7 @@ def capture_packets(ip_address): # Takes an IP address
             print(f"Destination IP: {dest_ip}")
             print(f"Protocol: {protocol}")
 
-            if protocol == 17: #UDP protocol number is 17
-                udp_header = ip_data[:8]
-                udp_header_unpacked = struct.unpack("!HHHH", udp_header)
-                src_port = udp_header_unpacked[0]
-                dest_port = udp_header_unpacked[1]
-                length = udp_header_unpacked[2]
-                checksum = udp_header_unpacked[3]
-                udp_data = ip_data[8:length]
-
-                print(f"Source Port: {src_port}")
-                print(f"Destination Port: {dest_port}")
-                print(f"UDP Length: {length}")
-                print(f"UDP Checksum: {checksum}")
-                print(f"UDP Data: {binascii.hexlify(udp_data)}")
-
-            elif protocol == 6: #TCP protocol number is 6
+            if protocol == 6: #TCP protocol number is 6
                 tcp_header = ip_data[:20] #TCP header is 20 bytes minimum
                 tcp_header_unpacked = struct.unpack("!HHLLBBHHH", tcp_header)
                 src_port = tcp_header_unpacked[0]
